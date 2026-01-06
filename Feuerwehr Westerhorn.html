@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Freiwillige Feuerwehr Westerhorn</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{--red:#cc1f1f;--bg:#0b0b0b;--ease:cubic-bezier(.19,1,.22,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:Segoe UI,Arial,sans-serif;
+  background:radial-gradient(circle at top,#1a0000,var(--bg));
+  color:#eee;opacity:0;animation:in 1.1s forwards
+}
+@keyframes in{to{opacity:1}}
+/* Progress */
+.progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--red),#ff7a18);z-index:9999}
+/* Header */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  padding:18px 40px;display:flex;justify-content:space-between;align-items:center;
+  background:rgba(10,0,0,.75);backdrop-filter:blur(10px);transition:.4s
+}
+header.scrolled{padding:12px 40px;background:rgba(5,0,0,.95)}
+.logo{font-size:24px;font-weight:900;color:var(--red)}
+nav a{color:#eee;margin-left:18px;text-decoration:none;font-weight:bold;position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:.3s}
+nav a:hover::after{width:100%}
+/* Hero */
+.hero{
+  height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),url("https://images.unsplash.com/photo-1609875550425-32f0b7ed2b7c");
+  background-size:cover;background-position:center
+}
+.hero h1{font-size:64px;color:var(--red);transform:translateY(40px);opacity:0;animation:h 1.2s var(--ease).3s forwards}
+.hero p{letter-spacing:3px;margin-top:12px;opacity:0;animation:h 1.2s var(--ease).6s forwards}
+@keyframes h{to{opacity:1;transform:translateY(0)}}
+/* Sections */
+.section{max-width:1200px;margin:auto;padding:140px 30px;opacity:0;transform:translateY(80px);transition:1s var(--ease)}
+.section.show{opacity:1;transform:none}
+.section h2{font-size:36px;color:var(--red);margin-bottom:30px}
+.section p{line-height:1.7;max-width:900px}
+/* Counter */
+.counter-box{display:flex;justify-content:center;gap:80px}
+.counter span{font-size:56px;font-weight:900;color:#ff5c2a}
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.card{
+  background:linear-gradient(145deg,#0f0f0f,#161616);border-radius:16px;padding:30px;transition:.5s
+}
+.card:hover{transform:translateY(-12px);box-shadow:0 40px 100px rgba(255,60,0,.4)}
+.card img{width:100%;border-radius:12px;margin:20px 0}
+/* Timeline */
+.timeline{display:grid;gap:30px}
+.einsatz{background:#111;padding:30px;border-left:5px solid var(--red);border-radius:12px}
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.gallery div{height:180px;background:#222;border-radius:14px;display:flex;align-items:center;justify-content:center}
+/* Map */
+.map{border-radius:18px;overflow:hidden;border:1px solid #300;box-shadow:0 40px 100px rgba(0,0,0,.6)}
+.map iframe{width:100%;height:420px;border:0}
+.route-btns{display:flex;gap:14px;margin-top:16px;flex-wrap:wrap}
+.route-btns a{
+  background:#111;border:1px solid #300;border-radius:999px;padding:10px 16px;
+  color:#eee;text-decoration:none;font-weight:bold;transition:.3s
+}
+.route-btns a:hover{box-shadow:0 0 18px rgba(255,80,0,.6);transform:translateY(-2px)}
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.contact-box{background:#111;padding:25px;border-radius:14px}
+/* Notruf */
+.notruf{text-align:center;padding:140px 20px;background:radial-gradient(circle,#260000,#000)}
+.notruf span{font-size:72px;color:var(--red)}
+/* Footer */
+footer{text-align:center;padding:40px;color:#666}
+</style>
+</head>
+
+<body>
+
+<div class="progress"></div>
+
+<header id="header">
+  <div class="logo">🚒 Freiwillige Feuerwehr Westerhorn</div>
+  <nav>
+    <a href="#ueber">Über uns</a>
+    <a href="#einsatz">Einsätze</a>
+    <a href="#fahrzeuge">Fahrzeuge</a>
+    <a href="#karte">Karte</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="#impressum">Impressum</a>
+    <a href="#datenschutz">Datenschutz</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Feuerwehr Westerhorn</h1>
+  <p>RETTEN · LÖSCHEN · BERGEN · SCHÜTZEN</p>
+</section>
+
+<section class="section" id="ueber">
+  <h2>Über uns</h2>
+  <p>
+    Die <strong>Freiwillige Feuerwehr Westerhorn</strong> wurde <strong>1890</strong> gegründet
+    und ist die zuständige Feuerwehr der Gemeinde Westerhorn (Amt Hörnerkirchen, Schleswig-Holstein).
+    Ehrenamtliche Einsatzkräfte leisten Brandbekämpfung, technische Hilfeleistung,
+    Unwettereinsätze und vorbeugenden Brandschutz. Seit 2001 besteht eine gemeinsame
+    Jugendfeuerwehr mit Hohenfelde.
+  </p>
+</section>
+
+<section class="section">
+  <h2>📊 Einsätze 2026</h2>
+  <div class="counter-box">
+    <div class="counter"><span id="c1">0</span><p>Einsätze gesamt</p></div>
+    <div class="counter"><span id="c2">0</span><p>Brandeinsätze</p></div>
+  </div>
+</section>
+
+<section class="section" id="einsatz">
+  <h2>🔥 Einsätze 2026</h2>
+  <div class="timeline">
+    <div class="einsatz"><strong>Januar:</strong> Kleinbrand im Freien</div>
+    <div class="einsatz"><strong>Februar:</strong> Technische Hilfeleistung</div>
+    <div class="einsatz"><strong>März:</strong> Unwettereinsatz</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>📸 Einsatz-Galerie</h2>
+  <div class="gallery">
+    <div>Einsatzfoto</div><div>Einsatzfoto</div><div>Einsatzfoto</div>
+  </div>
+</section>
+
+<section class="section" id="fahrzeuge">
+  <h2>🚒 Fahrzeuge</h2>
+  <div class="cards">
+    <div class="card"><h3>MZF</h3><img src="MZF_Westerhorn.jpg"></div>
+    <div class="card"><h3>TLF 3000</h3><img src="TLF300.jpg"></div>
+    <div class="card"><h3>LF 20/16</h3><img src="LF2016neu.jpg"></div>
+  </div>
+</section>
+
+<section class="section" id="karte">
+  <h2>🗺️ Standort</h2>
+  <div class="map">
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=9.618%2C53.847%2C9.628%2C53.852&layer=mapnik&marker=53.8495%2C9.6235"
+      loading="lazy"></iframe>
+  </div>
+  <div class="route-btns">
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Am+Beek+3,+25364+Westerhorn" target="_blank">Route planen (Google Maps)</a>
+    <a href="https://www.openstreetmap.org/directions?to=53.8495,9.6235" target="_blank">Route planen (OSM)</a>
+  </div>
+</section>
+
+<section class="section" id="kontakt">
+  <h2>Kontakt</h2>
+  <div class="contact-grid">
+    <div class="contact-box"><h3>📍 Adresse</h3><p>Am Beek 3<br>25364 Westerhorn</p></div>
+    <div class="contact-box"><h3>🌐 Social Media</h3><p>Facebook: Freiwillige Feuerwehr Westerhorn<br>Instagram: @feuerwehr_westerhorn</p></div>
+    <div class="contact-box"><h3>☎️ Verwaltung</h3><p>Tel.: +49 4123 681-01<br>info@stadt-barmstedt.de</p></div>
+  </div>
+</section>
+
+<section class="section" id="impressum">
+  <h2>Impressum</h2>
+  <p>Freiwillige Feuerwehr Westerhorn<br>Am Beek 3<br>25364 Westerhorn</p>
+</section>
+
+<section class="section" id="datenschutz">
+  <h2>Datenschutz</h2>
+  <p>Diese Website nutzt OpenStreetMap. Es werden keine Tracking-Cookies eingesetzt.</p>
+</section>
+
+<section class="notruf">
+  <h2>NOTRUF</h2>
+  <span>112</span>
+</section>
+
+<footer>© 2026 Freiwillige Feuerwehr Westerhorn</footer>
+
+<script>
+const header=document.getElementById("header");
+const progress=document.querySelector(".progress");
+window.addEventListener("scroll",()=>{
+  header.classList.toggle("scrolled",window.scrollY>60);
+  const h=document.documentElement;
+  progress.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+"%";
+});
+const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("show")),{threshold:.15});
+document.querySelectorAll(".section").forEach(s=>obs.observe(s));
+function count(id,target){
+  let n=0;const el=document.getElementById(id);
+  const i=setInterval(()=>{el.textContent=++n;if(n>=target)clearInterval(i)},35);
+}
+count("c1",7);count("c2",2);
+</script>
+
+</body>
+</html>
